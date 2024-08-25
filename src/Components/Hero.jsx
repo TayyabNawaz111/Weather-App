@@ -7,6 +7,10 @@ function Hero() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if(!city){
+        setError("Please enter the city name");
+        return;
+    }
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8836c24544aebfcbb61ba4b064f23d9e&units=metric`
