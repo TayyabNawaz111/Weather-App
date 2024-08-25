@@ -1,9 +1,11 @@
-import "./App.css";
+import Logo from "./Components/Logo";
+import "./index.css";
+import "./App.css"
 
 function App() {
   return (
     <>
-      <p className="text-center">Weather App</p>
+      <Logo />
     </>
   );
 }
