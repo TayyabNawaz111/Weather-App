@@ -7,9 +7,9 @@ function Hero() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if(!city){
-        setError("Please enter the city name");
-        return;
+    if (!city) {
+      setError("Please enter the city name");
+      return;
     }
     try {
       const res = await fetch(
@@ -19,13 +19,15 @@ function Hero() {
         throw new Error("Response was not ok!");
       }
       const data = await res.json();
-      console.log(data);
+      //   console.log(data);
       setWeatherData(data);
       setCity("");
       setError(null);
     } catch (error) {
       console.error("Fetch error: ", error);
-      setError("Failed to fetch weather data. Please try again.");
+      setError(
+        "Failed to fetch weather data. Please check the city's spellings and try again."
+      );
     }
   }
 
@@ -56,9 +58,11 @@ function Hero() {
       </div>
 
       {/* Data fetching */}
-      { (!error && weatherData) && (
+      {!error && weatherData && (
         <div className="p-6 bg-gradient-to-r from-blue-200 to-blue-500 text-white rounded-lg shadow-xl mt-6 mx-auto max-w-lg text-center">
-          <h2 className="text-2xl font-bold mb-2">Weather in {weatherData.name}</h2>
+          <h2 className="text-2xl font-bold mb-2">
+            Weather in {weatherData.name}
+          </h2>
           <div className="flex justify-center items-center mb-4">
             <img
               src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
@@ -68,10 +72,15 @@ function Hero() {
           </div>
           <p className="text-lg mb-2">{weatherData.weather[0].description}</p>
           <p className="text-3xl font-bold">
-            {weatherData.main.temp}°C
+            {Math.ceil(weatherData.main.temp)}°C
+          </p>
+          <p className="text-lg mt-2">
+            Feels like: {Math.ceil(weatherData.main.feels_like)}°C
           </p>
           <p className="text-lg mt-2">Humidity: {weatherData.main.humidity}%</p>
-          <p className="text-lg mt-2">Wind Speed: {weatherData.wind.speed} m/s</p>
+          <p className="text-lg mt-2">
+            Wind Speed: {weatherData.wind.speed} m/s
+          </p>
         </div>
       )}
 
