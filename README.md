@@ -27,7 +27,7 @@ npm install
 
 
 Start the development server:
-npm start
+npm run dev
 The app will run on http://localhost:5173.
 
 Usage:
@@ -37,8 +37,8 @@ Click the "Search" button to retrieve the weather data.
 The app will display the current weather conditions for the specified city.
 
 Code Overview:
-src/App.js: Main entry point of the application.
-src/components/Hero.js: Contains the main logic for fetching and displaying weather data.
+src/App.jsx: Main entry point of the application.
+src/components/Hero.jsx: Contains the main logic for fetching and displaying weather data.
 API Reference
 OpenWeatherMap API: The app uses the OpenWeatherMap API to retrieve weather data. You can sign up for a free API key here (https://openweathermap.org/).
 Example API call:
